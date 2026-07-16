@@ -12,6 +12,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
@@ -25,4 +26,8 @@ html {
     radial-gradient(var(--s), var(--c2) 49%, #0000 50%) 0 var(--p),
     linear-gradient(var(--c1) 50%, var(--c2) 0) 0 0/1% calc(2 * var(--s));
   font-family: sans-serif;
+}
+
+body {
+  margin: 0;
 }

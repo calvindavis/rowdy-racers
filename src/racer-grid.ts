@@ -1,7 +1,8 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
-import type { Racer } from "./Racer";
+
+import type { Racer } from "@/types/Racer";
 
 @customElement("racer-grid")
 export class RacerGrid extends LitElement {
@@ -9,17 +10,15 @@ export class RacerGrid extends LitElement {
   racers: Racer[] | null = null;
 
   render() {
-    return html` <div class="racer-grid">
-      ${repeat(
-        this.racers || [],
-        (_, index) => index,
-        (racer) => html`<racer-card .racer=${racer}></racer-card>`,
-      )}
-    </div>`;
+    return repeat(
+      this.racers || [],
+      (_, index) => index,
+      (racer) => html`<racer-card .racer=${racer}></racer-card>`,
+    );
   }
 
   static styles = css`
-    .racer-grid {
+    :host {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;

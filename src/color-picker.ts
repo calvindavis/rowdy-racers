@@ -1,6 +1,7 @@
 import { LitElement, css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
+import { COLORS } from "./constants";
 
 @customElement("color-picker")
 export class ColorPicker extends LitElement {
@@ -11,7 +12,7 @@ export class ColorPicker extends LitElement {
   value: String | null = null;
 
   @property({ type: Array<String> })
-  options = ["green", "orange", "purple", "yellow"];
+  options = COLORS;
 
   _handleInput(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -19,22 +20,19 @@ export class ColorPicker extends LitElement {
   }
 
   render() {
-    return html`
-      <div class="color-picker" @input=${this._handleInput}>
-        ${repeat(
-          this.options,
-          (option) => option,
-          (option) =>
-            html`<input
-              type="radio"
-              name=${this.name}
-              value=${option}
-              .checked=${option === this.value}
-              style="background-color: var(--color-${option});"
-            />`,
-        )}
-      </div>
-    `;
+    return repeat(
+      this.options,
+      (option) => option,
+      (option) =>
+        html`<input
+          type="radio"
+          name=${this.name}
+          value=${option}
+          .checked=${option === this.value}
+          @input=${this._handleInput}
+          style="background-color: var(--color-${option});"
+        />`,
+    );
   }
 
   static styles = css`

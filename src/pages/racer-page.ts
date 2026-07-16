@@ -1,7 +1,7 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
-import { getRacer } from "./supabase";
+import { getRacer } from "@/supabase";
 
 @customElement("racer-page")
 export class RacerPage extends LitElement {

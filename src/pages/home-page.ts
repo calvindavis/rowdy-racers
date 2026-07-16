@@ -2,10 +2,10 @@ import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
-import { getRacers } from "./supabase";
+import { getRacers } from "@/supabase";
 
-@customElement("json-racers")
-export class JsonRacers extends LitElement {
+@customElement("home-page")
+export class HomePage extends LitElement {
   private _getRacersTask = new Task(this, {
     task: async () => getRacers(),
     args: () => [],
@@ -26,6 +26,6 @@ export class JsonRacers extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "json-racers": JsonRacers;
+    "home-page": HomePage;
   }
 }

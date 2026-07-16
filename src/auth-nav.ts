@@ -1,8 +1,8 @@
 import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import { Task } from "@lit/task";
-import { getUser, logIn, logOut } from "./supabase";
 import { when } from "lit/directives/when.js";
+import { getUser, logIn, logOut } from "@/supabase";
 
 @customElement("auth-nav")
 export class AuthNav extends LitElement {
