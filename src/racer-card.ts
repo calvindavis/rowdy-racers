@@ -42,11 +42,12 @@ export class RacerCard extends LitElement {
       ruleTitle,
     } = this.racer;
     const url = id ? `/racer/${id}` : undefined;
+    const imageUrl = image || "/racer-default-image.jpg";
 
     return html`
       <div class="top">
         ${when(name, () => html`<div class="name">${this.link(name, url)}</div>`)}
-        ${when(image, () => html`<img src="${image}" alt="" />`)}
+        <img src=${imageUrl} alt="" />
       </div>
 
       <div class="bottom">
