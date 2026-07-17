@@ -11,6 +11,11 @@ export async function getRacers(): Promise<Racer[]> {
   return response.data as Racer[];
 }
 
+export async function getRacersByUserId(id: string): Promise<Racer[]> {
+  const response = await client.from("racers").select().eq("user_id", id);
+  return response.data as Racer[];
+}
+
 export async function getRacer(racerId: string): Promise<Racer | null> {
   const { data } = await client
     .from("racers")
