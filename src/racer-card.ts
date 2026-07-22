@@ -81,13 +81,13 @@ export class RacerCard extends LitElement {
       --height: 502px;
       --width: 358px;
 
-      background-color: var(--background-color);
       color: var(--color-black);
+      border: var(--padding) solid var(--background-color);
       border-radius: var(--border-radius);
+      box-shadow: inset 0 0 0 100cqw var(--background-color);
       display: flex;
       flex-direction: column;
       height: var(--height);
-      padding: var(--padding);
       width: var(--width);
     }
 
@@ -110,8 +110,8 @@ export class RacerCard extends LitElement {
       align-self: start;
       color: inherit;
       font-family: fantasy, sans-serif;
-      background-color: var(--border-color-2);
       border-radius: 15px 0 99px 0;
+      box-shadow: inset 0 0 0 100cqw var(--border-color-2);
       font-size: 32px;
       line-height: 28px;
       max-width: 60%;
@@ -158,9 +158,9 @@ export class RacerCard extends LitElement {
       font-size: 11px;
       padding: 0 0.667em 0.333em 1.5em;
       border-radius: 0 0 0 99px;
+      box-shadow: inset 0 0 0 100cqw var(--border-color-1);
       text-transform: uppercase;
       text-align: right;
-      background-color: var(--border-color-1);
     }
 
     .ruleDescription {
