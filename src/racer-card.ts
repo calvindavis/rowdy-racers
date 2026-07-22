@@ -91,6 +91,12 @@ export class RacerCard extends LitElement {
       height: var(--height);
       padding: var(--padding);
       width: var(--width);
+
+      @media print {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        print-color-adjust: exact;
+      }
     }
 
     .top {

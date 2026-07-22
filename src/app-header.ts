@@ -21,6 +21,10 @@ export class AppHeader extends LitElement {
       display: flex;
       justify-content: space-between;
       padding: 20px;
+
+      @media print {
+        display: none;
+      }
     }
   `;
 }
