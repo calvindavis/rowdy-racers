@@ -16,14 +16,18 @@ export async function getRacersByUserId(id: string): Promise<Racer[]> {
   return response.data as Racer[];
 }
 
-export async function getRacer(racerId: string): Promise<Racer | null> {
+export async function getRacer(racerId: string): Promise<Racer> {
   const { data } = await client
     .from("racers")
     .select()
     .eq("id", racerId)
     .maybeSingle();
 
-  return data as Racer | null;
+  if (!data) {
+    throw new Error(`Cannot find racer with ID ${racerId}.`);
+  }
+
+  return data;
 }
 
 export async function saveRacer(racer: Racer): Promise<void> {

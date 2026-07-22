@@ -17,7 +17,7 @@ export class RacerPage extends LitElement {
     return this._getRacerTask.render({
       pending: () => html`<p>Loading...</p>`,
       complete: (racer) => html`<racer-card .racer=${racer}></racer-card>`,
-      error: (error) => html`<p>Error: ${error}</p>`,
+      error: () => (window.location.href = "/error"),
     });
   }
 }
