@@ -34,8 +34,8 @@ export async function saveRacer(racer: Racer): Promise<void> {
     border2: racer.border2,
     image: racer.image,
     name: racer.name,
-    ruleDescription: racer.ruleDescription,
-    ruleTitle: racer.ruleTitle,
+    flavour: racer.flavour,
+    rule: racer.rule,
     user_id: user?.id,
   });
 }

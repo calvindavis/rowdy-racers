@@ -3,11 +3,11 @@ export interface Racer {
   border2?: string;
   credit?: string;
   creditUrl?: string;
+  flavour?: string;
   id?: string;
   image?: string;
   imageCredit?: string;
   imageCreditUrl?: string;
   name?: string;
-  ruleTitle?: string;
-  ruleDescription?: string;
+  rule?: string;
 }

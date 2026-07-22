@@ -5,10 +5,10 @@ import { customElement } from "lit/decorators.js";
 export class ErrorPage extends LitElement {
   render() {
     return html`<racer-card
-      name="Error"
-      ruleDescription=${`When I navigate to ${window.location.pathname}, I am eliminated from the race.`}
-      ruleTitle="404 - Not Found"
       image="https://thumbs.dreamstime.com/b/dizzy-man-his-confused-head-spinning-41557657.jpg"
+      flavour="404 - Not Found"
+      name="Error"
+      rule=${`When I navigate to ${window.location.pathname}, I am eliminated from the race.`}
     ></racer-card>`;
   }
 

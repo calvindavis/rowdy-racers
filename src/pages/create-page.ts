@@ -37,10 +37,10 @@ export class CreatePage extends LitElement {
       border2: "orange",
       credit: "",
       creditUrl: "",
+      flavour: "",
       image: "",
       name: "",
-      ruleTitle: "",
-      ruleDescription: "",
+      rule: "",
     };
     localStorage.setItem(CreatePage.RACER_KEY, JSON.stringify(this.racer));
   }
@@ -92,25 +92,25 @@ export class CreatePage extends LitElement {
           </div>
 
           <div>
-            <label for="ruleTitle">Rule title</label>
+            <label for="flavour">Flavour</label>
             <input
               type="text"
-              name="ruleTitle"
+              name="flavour"
               placeholder="Rule title"
               maxlength="20"
-              .value=${this.racer.ruleTitle}
+              .value=${this.racer.flavour}
             />
           </div>
 
           <div>
-            <label for="ruleDescription">Rule description</label>
+            <label for="rule">Rule</label>
             <textarea
               maxlength="180"
-              name="ruleDescription"
+              name="rule"
               rows="5"
               cols="50"
-              placeholder="Rule description"
-              .value=${this.racer.ruleDescription}
+              placeholder="Rule"
+              .value=${this.racer.rule}
               required
             ></textarea>
           </div>

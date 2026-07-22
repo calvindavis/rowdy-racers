@@ -12,12 +12,12 @@ export class RacerCard extends LitElement {
   @property({ type: String }) border2: string | undefined;
   @property({ type: String }) credit: string | undefined;
   @property({ type: String }) creditUrl: string | undefined;
+  @property({ type: String }) flavour: string | undefined;
   @property({ type: String }) image: string | undefined;
   @property({ type: String }) imageCredit: string | undefined;
   @property({ type: String }) imageCreditUrl: string | undefined;
   @property({ type: String }) name: string | undefined;
-  @property({ type: String }) ruleDescription: string | undefined;
-  @property({ type: String }) ruleTitle: string | undefined;
+  @property({ type: String }) rule: string | undefined;
 
   link(text: string | undefined, url: string | undefined) {
     return when(
@@ -32,19 +32,18 @@ export class RacerCard extends LitElement {
     const border2 = this.border2 || this.racer.border2 || "orange";
 
     this.style.setProperty("--border-color-1", `var(--color-${border1})`);
-
     this.style.setProperty("--border-color-2", `var(--color-${border2})`);
   }
 
   render() {
     const credit = this.credit || this.racer.credit;
     const creditUrl = this.creditUrl || this.racer.creditUrl;
+    const flavour = this.flavour || this.racer.flavour;
     const image = this.image || this.racer.image;
     const imageCredit = this.imageCredit || this.racer.imageCredit;
     const imageCreditUrl = this.imageCreditUrl || this.racer.imageCreditUrl;
     const name = this.name || this.racer.name;
-    const ruleDescription = this.ruleDescription || this.racer.ruleDescription;
-    const ruleTitle = this.ruleTitle || this.racer.ruleTitle;
+    const rule = this.rule || this.racer.rule;
 
     const id = this.racer.id;
     const url = id ? `/racer/${id}` : undefined;
@@ -57,12 +56,9 @@ export class RacerCard extends LitElement {
       </div>
 
       <div class="bottom">
-        ${when(
-          ruleTitle,
-          () => html`<div class="ruleTitle">${ruleTitle}</div>`,
-        )}
+        ${when(flavour, () => html`<div class="flavour">${flavour}</div>`)}
 
-        <div class="ruleDescription">${ruleDescription}</div>
+        <div class="rule">${rule}</div>
       </div>
 
       ${when(
@@ -157,7 +153,7 @@ export class RacerCard extends LitElement {
       position: relative;
     }
 
-    .ruleTitle {
+    .flavour {
       position: absolute;
       top: calc(3 * var(--border-width));
       right: calc(3 * var(--border-width));
@@ -169,7 +165,7 @@ export class RacerCard extends LitElement {
       text-align: right;
     }
 
-    .ruleDescription {
+    .rule {
       text-align: center;
       padding: 40px;
       font-size: 18px;
