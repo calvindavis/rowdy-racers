@@ -44,7 +44,7 @@ export class RacerCard extends LitElement {
     const url = id ? `/racer/${id}` : undefined;
     const imageUrl = image || "/racer-default-image.jpg";
 
-    return html`
+    return html` <div class="container">
       <div class="top">
         ${when(name, () => html`<div class="name">${this.link(name, url)}</div>`)}
         <img src=${imageUrl} alt="" />
@@ -53,10 +53,10 @@ export class RacerCard extends LitElement {
       <div class="bottom">
         ${when(
           ruleTitle,
-          () => html`<div class="ruleTitle">${ruleTitle}</div>`,
+          () => html`<div class="rule-title">${ruleTitle}</div>`,
         )}
 
-        <div class="ruleDescription">${ruleDescription}</div>
+        <div class="rule">${ruleDescription}</div>
       </div>
 
       ${when(
@@ -67,42 +67,70 @@ export class RacerCard extends LitElement {
             ${this.link(imageCredit, imageCreditUrl)}
           </div>`,
       )}
-    `;
+    </div>`;
   }
 
   static styles = css`
+    *,
+    :host {
+      box-sizing: border-box;
+    }
+
     :host {
       --background-color: var(--color-brown);
       --border-color-1: var(--color-white);
       --border-color-2: var(--color-white);
-      --border-radius: 17px;
+      --card-border-radius: 17px;
       --border-width: 5px;
+      --border-width-2: 10px;
+      --border-width-3: 15px;
       --padding: 20px;
-      --height: 502px;
-      --width: 358px;
+      --height: 542px;
+      --width: 398px;
+      --name-font-size: 32px;
+      --name-line-height: 28px;
+      --rule-font-size: 18px;
+      --rule-padding: 35px;
+      --rule-title-font-size: 11px;
+      --border-radius-small: 15px;
+      --border-radius-large: 50px;
+      --image-border-radius: 35px;
+      --credit-font-size: 10px;
+      --credit-margin: 15px;
 
-      background-color: var(--background-color);
       color: var(--color-black);
-      border-radius: var(--border-radius);
-      display: flex;
+      container-type: inline-size;
+      display: block;
+      width: 100%;
+      aspect-ratio: calc(var(--width) / var(--height));
+      overflow: hidden;
+    }
+      
+    .container {
+      background-color: var(--background-color);
+      border-radius: calc(var(--card-border-radius) / var(--width) * 100cqw);
+      display:flex;
       flex-direction: column;
-      height: var(--height);
-      padding: var(--padding);
-      width: var(--width);
+      padding: calc(var(--padding) / var(--width) * 100cqw);
+      height: 100%;
     }
 
     .top {
       background-color: var(--color-white);
-      border-radius: 15px 50px 15px 50px;
+      border-radius:
+        calc(var(--border-radius-small) / var(--width) * 100cqw)
+        calc(var(--border-radius-large) / var(--width) * 100cqw)
+        calc(var(--border-radius-small) / var(--width) * 100cqw)
+        calc(var(--border-radius-large) / var(--width) * 100cqw);
       box-shadow:
-        inset 0 0 0 var(--border-width) var(--border-color-1),
-        inset 0 0 0 calc(2 * var(--border-width)) var(--background-color),
-        inset 0 0 0 calc(3 * var(--border-width)) var(--border-color-2);
+        inset 0 0 0 calc(var(--border-width) / var(--width) * 100cqw) var(--border-color-1),
+        inset 0 0 0 calc(var(--border-width-2) / var(--width) * 100cqw) var(--background-color),
+        inset 0 0 0 calc(var(--border-width-3) / var(--width) * 100cqw) var(--border-color-2);
       display: flex;
       flex-direction: column;
       height: 100%;
       margin-bottom: var(--border-width);
-      padding: calc(2 * var(--border-width));
+      padding: calc(var(--border-width-3) / var(--width) * 100cqw);
       position: relative;
     }
 
@@ -111,11 +139,11 @@ export class RacerCard extends LitElement {
       color: inherit;
       font-family: fantasy, sans-serif;
       background-color: var(--border-color-2);
-      border-radius: 15px 0 99px 0;
-      font-size: 32px;
-      line-height: 28px;
-      max-width: 60%;
-      padding: 0.3em 1em 0.3em 0.5em;
+      border-radius: 0 0 99px 0;
+      font-size: calc(var(--name-font-size) / var(--width) * 100cqw);
+      line-height: calc(var(--name-line-height) / var(--width) * 100cqw);
+      max-width: 80%;
+      padding: 0.156em 1em 0.281em 0.343em;
       position: relative;
       text-decoration: none;
       text-transform: uppercase;
@@ -126,62 +154,78 @@ export class RacerCard extends LitElement {
         color: inherit;
         text-decoration: none;
       }
+        position: absolute;
+
     }
 
-    img {
-      border-radius: 0 34px 0 34px;
+    ximg {
+      border-radius:
+        0
+        calc(var(--image-border-radius) / var(--width) * 100cqw)
+        0
+        calc(var(--image-border-radius) / var(--width) * 100cqw);
       position: absolute;
-      top: calc(3 * var(--border-width));
-      right: calc(3 * var(--border-width));
-      bottom: calc(3 * var(--border-width));
-      left: calc(3 * var(--border-width));
+      top: calc(var(--image-border--width-3) / var(--width) * 100cqw);
+      right: calc(var(--image-border--width-3) / var(--width) * 100cqw);
+      bottom: calc(var(--image-border--width-3) / var(--width) * 100cqw);
+      left: calc(var(--image-border--width-3) / var(--width) * 100cqw);
       width: calc(100% - 6 * var(--border-width));
       height: calc(100% - 6 * var(--border-width));
       object-fit: cover;
     }
 
+    img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .bottom {
       background-color: var(--color-white);
-      border-radius: 50px 15px 50px 15px;
+      border-radius:
+        calc(var(--border-radius-large) / var(--width) * 100cqw)
+        calc(var(--border-radius-small) / var(--width) * 100cqw)
+        calc(var(--border-radius-large) / var(--width) * 100cqw)
+        calc(var(--border-radius-small) / var(--width) * 100cqw);
       box-shadow:
         inset 0 0 0 var(--border-width) var(--border-color-2),
-        inset 0 0 0 calc(2 * var(--border-width)) var(--background-color),
-        inset 0 0 0 calc(3 * var(--border-width)) var(--border-color-1);
-      padding: calc(2 * var(--border-width));
+        inset 0 0 0 var(--border-width-2) var(--background-color),
+        inset 0 0 0 var(--border-width-3) var(--border-color-1);
+      padding: var(--border-width-3);
       position: relative;
     }
 
-    .ruleTitle {
+    .rule-title {
       position: absolute;
-      top: calc(3 * var(--border-width));
-      right: calc(3 * var(--border-width));
-      font-size: 11px;
+      top: var(--border-width-3);
+      right: var(--border-width-3);
+      font-size: calc(var(--rule-title-font-size) / var(--width) * 100cqw);
       padding: 0 0.667em 0.333em 1.5em;
-      border-radius: 0 0 0 99px;
+      border-radius: 0 0 0 999px;
       text-transform: uppercase;
       text-align: right;
       background-color: var(--border-color-1);
     }
 
-    .ruleDescription {
+    .rule {
       text-align: center;
-      padding: 40px;
-      font-size: 18px;
+      padding: calc(var(--rule-padding) / var(--width) * 100cqw);
+      font-size: calc(var(--rule-font-size) / var(--width) * 100cqw);
     }
 
     .credit {
       color: var(--color-white);
       display: flex;
-      font-size: 10px;
+      font-size: calc(var(--credit-font-size) / var(--width) * 100cqw);
       justify-content: space-between;
-      line-height: 10px;
-      margin-top: 15px;
+      line-height: 1;
+      margin-top: calc(var(--credit-margin) / var(--width) * 100cqw);
 
       a {
         color: inherit;
         text-decoration: none;
       }
-    }
   `;
 }
 

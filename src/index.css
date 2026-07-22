@@ -8,11 +8,9 @@
   --color-white: #ffffff;
   --color-yellow: #dcdf2b;
   --color-yellow-light: #dcdf5a;
-}
 
-* {
-  box-sizing: border-box;
-  margin: 0;
+  --racer-card-width: 398px;
+  --racer-card-height: 542px;
 }
 
 html {
